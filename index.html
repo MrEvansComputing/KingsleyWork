@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Football-themed Year 3 maths and reading practice with instant feedback.">
+<title>Kickoff Club · Year 3 Maths &amp; English</title>
+<style>
+:root{color-scheme:light;--ink:#123126;--muted:#41594e;--paper:#f6f7ef;--line:#d8e1d5;--green:#17543b;--lime:#d6f46c;--warm:#ffebcc;font:100%/1.55 system-ui,sans-serif}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;color:var(--ink);background:var(--paper)}
+button,input{font:inherit}
+button{cursor:pointer}
+button:disabled{cursor:default}
+:focus-visible{outline:3px solid #205bb7;outline-offset:4px;box-shadow:0 0 0 3px white}
+[hidden]{display:none!important}
+.wrap{width:min(1120px,calc(100% - 2rem));margin:auto}
+header{background:#102e23;color:#fff;border-bottom:1px solid #39604d}
+header .wrap{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.brand{font-weight:900;letter-spacing:-.025em;display:flex;align-items:center;gap:.65rem}
+.brand span{background:var(--lime);color:var(--ink);border-radius:10px;padding:.25rem .48rem}
+.year{font-size:.85rem;color:#e1ecdf}
+.hero{background:#103c2a;color:white;overflow:hidden}
+.hero .wrap{position:relative;isolation:isolate;min-height:350px;display:grid;align-content:center;padding:3rem 0}
+.kicker{font-size:.76rem;text-transform:uppercase;letter-spacing:.15em;font-weight:850;margin:0 0 .6rem;color:var(--green)}
+.hero .kicker{color:var(--lime)}
+h1,h2,h3,p{overflow-wrap:anywhere}
+h1{font-size:clamp(2.8rem,8vw,6.1rem);letter-spacing:-.078em;line-height:.93;margin:0 0 1rem;font-weight:950}
+h1 em{color:var(--lime);font-style:normal}
+.hero p:last-of-type{max-width:34ch;font-size:1.1rem;margin:0;color:#edf5eb}
+.pitch{position:absolute;z-index:-1;right:-4%;top:50%;width:48%;aspect-ratio:1.42;transform:translateY(-50%) rotate(-11deg);border:2px solid #7bae88;border-radius:12px;background:repeating-linear-gradient(90deg,#205740 0 12.5%,#245e44 12.5% 25%);box-shadow:0 18px 55px #08291d80}
+.pitch::before{content:"";position:absolute;inset:0 50% 0 auto;border-left:2px solid #7bae88}
+.pitch::after{content:"";position:absolute;width:30%;aspect-ratio:1;border:2px solid #7bae88;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%)}
+.box{position:absolute;top:25%;width:18%;height:50%;border:2px solid #7bae88}
+.box:first-child{left:-2px}.box:nth-child(2){right:-2px}
+.ball{position:absolute;z-index:1;top:50%;left:50%;transform:translate(-50%,-50%) rotate(11deg);font-size:clamp(3.5rem,10vw,8rem);line-height:1;filter:drop-shadow(10px 14px 9px #092e22)}
+main{padding:2rem 0 3rem}
+h2{font-size:clamp(1.65rem,4vw,2.45rem);line-height:1.12;letter-spacing:-.045em;margin:.35rem 0 .75rem}
+h3{line-height:1.2;margin:0 0 .55rem}
+.intro{margin:.25rem 0 1.25rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.card,.panel,.scoreboard{background:white;border:1px solid var(--line);border-radius:20px;padding:clamp(1rem,3vw,1.65rem);box-shadow:0 4px 0 #e4e9df}
+.subject{display:flex;flex-direction:column;align-items:flex-start;gap:.7rem;border-top:5px solid #77ab51}
+.subject.english{border-top-color:#d99448}
+.subject p{margin:0;color:var(--muted)}
+.subject .button{margin-top:auto}
+.tag{font-size:.82rem;font-weight:800;background:#edf5df;border-radius:7px;padding:.24rem .6rem}
+.english .tag{background:var(--warm)}
+.button{border:1px solid transparent;border-radius:11px;padding:.62rem 1rem;min-height:46px;background:var(--green);color:white;font-weight:780;text-align:center}
+.button:hover:not(:disabled){background:#0d402d}
+.secondary{background:white;color:var(--ink);border-color:#91a99a}
+.secondary:hover:not(:disabled){background:#edf5e9}
+.toolbar,.actions{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center}
+.toolbar{margin:0 0 1rem}
+.scoreboard{margin-top:1.35rem}
+.scoreboard p{margin:.2rem 0}
+meter,progress{display:block;width:100%;height:1rem;accent-color:var(--green)}
+.rounds{list-style:none;padding:0;margin:0;display:grid;gap:.75rem}
+.round{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.round p{margin:.25rem 0;color:var(--muted)}
+.round .button{flex-shrink:0}
+.drill{display:grid;gap:1rem;align-items:start}
+.drill.reading{grid-template-columns:1fr 1fr}
+.story{background:#fff6e7;border-color:#e4cba6}
+.story p{margin:.9rem 0;max-width:54ch}
+.story .task,.warmup{background:#edf5e9;padding:.7rem .85rem;border-radius:10px;color:var(--ink)}
+.warmup summary{cursor:pointer;font-weight:800}
+.warmup p{margin:.55rem 0 .2rem}
+.question{margin:1rem 0;font-size:clamp(1.18rem,3vw,1.55rem);letter-spacing:-.02em}
+.answers{display:grid;gap:.55rem}
+.choice{text-align:left;background:white;color:var(--ink);border:1px solid #91a99a;border-radius:10px;padding:.62rem .8rem;min-height:46px}
+.choice:hover:not(:disabled){background:#edf5e9}
+.choice[data-state="wrong"]{background:#fff0e0;border-color:#ac6632}
+.choice[data-state="right"]{background:#e4f4d9;border-color:#397548;font-weight:750}
+.number label{display:block;font-weight:750;margin-bottom:.3rem}
+.number input{width:8rem;max-width:100%;border:1px solid #718e7f;border-radius:9px;padding:.65rem;background:white;color:var(--ink)}
+.number .actions{align-items:stretch}
+.feedback,.hint{margin:.65rem 0;padding:.65rem .85rem;border-radius:9px}
+.feedback:empty,.hint:empty{margin:0;padding:0}
+.feedback[data-tone="wrong"]{background:#fff0e0;color:#652d13}
+.feedback[data-tone="right"]{background:#e4f4d9;color:#183c25}
+.hint{background:#fff6d4;color:#463915}
+.controls{margin-top:1rem}
+.small{font-size:.88rem;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:1.3rem 0 1.8rem;color:var(--muted)}
+footer p{margin:0}
+dialog{color:var(--ink);border:1px solid var(--line);border-radius:17px;max-width:min(30rem,calc(100% - 2rem));padding:1.35rem}
+dialog::backdrop{background:#0b271dc2}
+@media(max-width:700px){.pitch{right:-25%;width:72%;opacity:.34}.hero .wrap{min-height:295px}.drill.reading{grid-template-columns:1fr}}
+@media(max-width:530px){.grid{grid-template-columns:1fr}.round{align-items:flex-start;flex-direction:column;gap:.45rem}.hero .wrap{padding:2.25rem 0}.pitch{opacity:.25}.ball{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="brand"><span aria-hidden="true">⚽</span> Kickoff Club</div><div class="year">Year 3</div></div></header>
+<section class="hero" id="hero" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div class="pitch" aria-hidden="true"><i class="box"></i><i class="box"></i><span class="ball">⚽</span></div>
+    <p class="kicker">Football training ground</p>
+    <h1 id="hero-title">Ready to<br><em>kick off?</em></h1>
+    <p>Train your maths and reading skills with football challenges inspired by Ronaldo and Messi.</p>
+  </div>
+</section>
+<main class="wrap" id="main"></main>
+<footer><div class="wrap"><p id="storage-note">Progress stays in this browser. No account needed.</p></div></footer>
+<noscript><p class="wrap">Turn on JavaScript in your browser to play and check your answers.</p></noscript>
+<dialog id="reset-dialog" aria-labelledby="reset-title">
+  <h2 id="reset-title">Clear all progress?</h2>
+  <p>This clears your results and any rounds you’ve started in this browser.</p>
+  <form method="dialog" class="actions"><button class="button secondary" value="cancel" autofocus>Keep progress</button><button class="button" value="clear">Clear progress</button></form>
+</dialog>
+<script>
+'use strict';
+const stories = [
+  {
+    title: 'The quiet pass', skill: 'Find details and read for clues',
+    text: [
+      'Maya wore her favourite Messi shirt to Saturday training. She wanted to score, so she chased the ball all the way to the corner. Two defenders followed her. Maya looked up and spotted Leo near the goal. He had room to move.',
+      'Maya rolled the ball gently across the grass. Leo took one touch and scored. At first, Maya wished she had taken the shot herself. Then Leo ran over and gave her a high five. “You made that goal happen,” he said. In the next game, Maya kept looking up before she passed.'
+    ],
+    task: 'Read the story twice. Then tell someone how Maya helps her team, or say it aloud to yourself.',
+    questions: [
+      ['Find a detail','Whose name was on Maya’s favourite shirt?','Messi','Ronaldo','Leo','Look in the first sentence.','Maya wore her favourite Messi shirt.'],
+      ['Find a detail','Who followed Maya to the corner?','Two defenders','Leo','The coach','Look just after Maya chases the ball.','Two defenders followed Maya.'],
+      ['Read for clues','Why was Leo a good person to pass to?','He was near the goal and had space.','He was standing in the corner.','He had already scored.','Find where Leo was standing and how much room he had.','Leo was near the goal and had room to move.'],
+      ['Word meaning','What does “gently” tell you about the pass?','Maya passed softly.','Maya kicked as hard as she could.','Maya threw the ball.','Think of how you would move a ball without sending it too far.','A gentle pass is soft and controlled.'],
+      ['Put events in order','What happened just after Maya rolled the ball across the grass?','Leo took a touch and scored.','Maya chased the ball to the corner.','Leo gave Maya a high five.','Read the first two sentences of the second paragraph.','Leo scored before he gave Maya a high five.'],
+      ['Main idea','Which idea best fits the whole story?','A good pass can help the team score.','Players should always shoot from the corner.','A favourite shirt makes you score.','Think about what Maya did to help Leo.','Maya’s pass helped Leo score, and she kept looking up in the next game.']
+    ]
+  },
+  {
+    title: 'Ronaldo’s rainy drill', skill: 'Follow events and work out word meanings',
+    text: [
+      'Sam loved watching Ronaldo practise his footwork. On Tuesday, Sam set out four cones in the playground to try a dribbling drill. Then it began to rain. The ground grew slippery, so Sam’s coach moved the drill into the school hall.',
+      'Inside, Sam rushed and knocked over a cone. “Slow feet first,” said the coach. Sam set the cone upright and tried again. This time, he took small touches and kept the ball close. He reached the last cone without touching any of them. On the way home, Sam told his sister he was proud of his careful run.'
+    ],
+    task: 'Retell the story in three parts. Start each part with “First”, “Next” or “Finally”.',
+    questions: [
+      ['Find a detail','How many cones did Sam set out?','Four','Two','Ten','Find the number in the first paragraph.','Sam set out four cones.'],
+      ['Cause and effect','Why did the coach move the drill indoors?','The rain made the ground slippery.','The cones were too small.','Sam had finished the drill.','Read the sentence just before the move to the hall.','The rain made the ground slippery.'],
+      ['Word meaning','What does “upright” mean here?','Standing up straight','Lying on its side','Moving quickly','Picture the cone before and after Sam picked it up.','Sam put the cone back so it was standing up straight.'],
+      ['Put events in order','When did Sam knock over a cone?','After moving into the hall','Before it began to rain','On the way home','Look at the first word of the second paragraph.','“Inside” tells us Sam was already in the hall.'],
+      ['Read for clues','What change helped Sam finish the drill?','He took small touches and kept the ball close.','He rushed past every cone.','He took two cones away.','Compare Sam’s two tries in the hall.','Small touches gave Sam more control of the ball.'],
+      ['Main idea','Which sentence best sums up the story?','Sam gains control by slowing down.','Sam learns to play without cones.','Sam gives up because it rains.','Think about the coach’s advice and what happened next.','Sam slowed down and got through the cones carefully.']
+    ]
+  },
+  {
+    title: 'The club notice', skill: 'Read information and follow instructions',
+    text: [
+      'Saturday Football Club meets at 10 o’clock by the blue gate. Bring a water bottle and wear trainers. If the pitch is too wet, meet in the school hall instead. Ask an adult to check the noticeboard on Saturday morning to find out where to go.',
+      'We will start with a warm-up. At the Messi station, you will pass through a gate made of cones. At the Ronaldo station, you will aim your shots at coloured targets. You will try both stations, then finish with a short match. New players can ask an adult in a yellow bib for help.'
+    ],
+    task: 'Pretend a friend has never been to the club. Tell them when to go, what to bring and what they will do.',
+    questions: [
+      ['Find a detail','What time does the club start?','10 o’clock','2 o’clock','5 o’clock','Start at the top of the notice.','The club meets at 10 o’clock.'],
+      ['Follow instructions','Where should you go if the pitch is too wet?','The school hall','The blue gate','The coloured targets','Find the sentence that begins “If”.','The notice says to meet in the school hall if the pitch is too wet.'],
+      ['Find a detail','What will you do at the Ronaldo station?','Shoot at coloured targets.','Pass through a cone gate.','Put on a yellow bib.','Look for Ronaldo’s name in the second paragraph.','Players aim their shots at coloured targets there.'],
+      ['Word meaning','What is a “station” in this notice?','A place for one practice activity','A place to catch a train','The name of a player','Think about what pupils do at each named spot.','Each station is a place for a different football activity.'],
+      ['Put events in order','What is the last activity?','A short match','The warm-up','Passing through cones','Find the words “finish with”.','The notice says the club finishes with a short match.'],
+      ['Purpose','Why was this notice written?','To explain where to go and what to expect','To tell the story of a goal','To choose the captain','Think about how this notice could help someone coming for the first time.','It gives practical details about the club and describes the activities.']
+    ]
+  },
+  {
+    title: 'A place on the team', skill: 'Explain feelings and choose evidence',
+    text: [
+      'Ali stood by the touchline, twisting the edge of his bib. It was his first match at a new school. The other players were choosing positions, but he stayed quiet. Nia noticed him and asked if he would like to play beside her in defence. Ali nodded.',
+      'When the other team came close to goal, Nia called, “I’m here!” Ali passed to her. A little later, Nia passed back to Ali, who sent the ball up the pitch. At the break, Ali was smiling. He turned to Nia and said, “I’d like to try again in the second half.”'
+    ],
+    task: 'Read the first and last sentences aloud. Say how Ali’s feelings change and point to a clue for each feeling.',
+    questions: [
+      ['Find a detail','Where was Ali standing at the start?','By the touchline','Inside the goal','In the school hall','Read the opening sentence.','Ali stood by the touchline.'],
+      ['Read for clues','How did Ali most likely feel at the start?','Nervous','Cross','Proud','Think about why he stayed quiet and twisted his bib.','Twisting his bib and staying quiet suggest Ali felt nervous.'],
+      ['Find a detail','What position did Nia invite Ali to play?','Defence','Goalkeeper','Striker','Find what Nia asked in the first paragraph.','Nia asked Ali to play beside her in defence.'],
+      ['Word meaning','Where is the “touchline” on a football pitch?','Along one side of the pitch','In the middle of the goal','Inside the centre circle','Picture where a player might stand while waiting to join a match.','The touchline marks the side of the pitch.'],
+      ['Choose evidence','Which clue shows that Ali wanted to keep playing?','He said he would like to try again.','He twisted the edge of his bib.','The other team came close to goal.','Look at what Ali says at the break.','Ali asks to try again in the second half.'],
+      ['Main idea','Which title would also fit the story?','A teammate helps Ali settle in','Ali scores the winning goal','Nia practises penalties','Think about what Nia did and how Ali changed.','Nia invited Ali to join her, and he grew more comfortable.']
+    ]
+  }
+];
+const maths = [
+  {title:'Pairs on the pitch', skill:'Practise the 2 times table', warm:'Think of players in pairs. Four pairs means 2 + 2 + 2 + 2 = 8, or 4 × 2 = 8. Say the 2 times table aloud to warm up.'},
+  {title:'Five-a-side', skill:'Practise the 5 times table', warm:'Each team has 5 players. Count 5, 10, 15, 20 to find the total for four teams. Notice how the numbers end in 5 or 0.'},
+  {title:'Ten in training', skill:'Practise the 10 times table', warm:'Each bag holds 10 bibs. Three bags mean 3 tens, or 30 bibs. Count in tens to find the total for six bags.'},
+  {title:'Share the kit', skill:'Divide by 2, 5 and 10', warm:'Share 20 bibs equally between 5 teams. Give each team 1 bib at a time until all 20 are used. Each team gets 4, because 5 × 4 = 20.'},
+  {title:'Match day mix', skill:'Use multiplication and division together', warm:'Say a fact family aloud. Start with 5 × 6 = 30 and 6 × 5 = 30. Then use those facts to say 30 ÷ 5 = 6 and 30 ÷ 6 = 5.'}
+];
+const subjects = {
+  maths: {title:'Maths', rounds:maths, subtitle:'Times tables, sharing and match-day problems.', time:'20–30 min · 5 rounds'},
+  english: {title:'English', rounds:stories, subtitle:'Football stories, word meanings and reading for clues.', time:'20–30 min · 4 reads'}
+};
+const main = document.querySelector('#main');
+const hero = document.querySelector('#hero');
+const storageNote = document.querySelector('#storage-note');
+const dialog = document.querySelector('#reset-dialog');
+const storageKey = 'kickoff-club:v1:' + location.pathname;
+let record = {};
+try {
+  const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+  if (saved && typeof saved === 'object' && !Array.isArray(saved)) record = saved;
+} catch {
+  storageNote.textContent = 'Progress may only last while this page is open.';
+}
+
+function save() {
+  try {
+    localStorage.setItem(storageKey, JSON.stringify(record));
+  } catch {
+    storageNote.textContent = 'Progress only lasts while this page is open.';
+  }
+}
+
+function shuffle(items) {
+  const copy = [...items];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+function makeMath(round) {
+  const tables = [2, 5, 10];
+  const fixedTable = tables[round];
+  const facts = shuffle(Array.from({length:12}, (_, i) => i + 1)).slice(0, 10);
+  return facts.map((groups, index) => {
+    const size = fixedTable || tables[index % 3];
+    const total = groups * size;
+    const divide = round === 3 || (round === 4 && index % 2 === 0);
+    const word = index >= 7;
+    const missing = !divide && index === (round === 4 ? 5 : 6);
+    const equation = divide ? `${total} ÷ ${size} = ?` : missing ? `? × ${size} = ${total}` : `${groups} × ${size} = ?`;
+    const wordProblems = divide ? [
+      `A coach shares ${total} bibs equally between ${size} teams. How many bibs does each team get?`,
+      `There are ${total} cones. Put ${size} cones at each practice station. How many stations can you make?`,
+      `The club shares ${total} water bottles equally between ${size} benches. How many bottles go on each bench?`
+    ] : [
+      `There are ${groups} kit bags. Each holds ${size} bibs. How many bibs are there altogether?`,
+      `During training, ${groups} players each take ${size} shots. How many shots do they take in all?`,
+      `The club puts out ${groups} rows of cones. Each row has ${size} cones. How many cones are there in all?`
+    ];
+    const prompt = word ? wordProblems[index - 7] : equation;
+    const answer = divide || missing ? groups : total;
+    const options = !word && !missing && index % 3 === 0
+      ? shuffle([...new Set([answer, answer + (divide ? 1 : size), Math.abs(answer - (divide ? 1 : size)), answer + 2])].slice(0, 3))
+      : null;
+    return {
+      skill: word ? 'Football word problem' : divide ? 'Equal sharing' : missing ? 'Find the missing number' : 'Times tables',
+      prompt, answer, options,
+      hint: divide || missing
+        ? `Think: how many groups of ${size} make ${total}? Count in ${size}s or use a times-table fact.`
+        : `Count in ${size}s. Make ${groups} ${groups === 1 ? 'jump' : 'jumps'}, starting at 0. Try drawing a mark for each jump.`,
+      why: divide ? `${size} × ${groups} = ${total}, so ${total} ÷ ${size} = ${groups}.`
+        : `${groups} ${groups === 1 ? 'group' : 'groups'} of ${size} gives a total of ${total}.`
+    };
+  });
+}
+
+function makeEnglish(round) {
+  return stories[round].questions.map(([skill, prompt, answer, wrong1, wrong2, hint, why]) => ({
+    skill, prompt, answer, options:shuffle([answer, wrong1, wrong2]), hint, why
+  }));
+}
+
+function put(html, showHero = false, focus = true) {
+  hero.hidden = !showHero;
+  main.innerHTML = html;
+  if (focus) {
+    const heading = main.querySelector('[data-focus]');
+    heading.focus({preventScroll:true});
+    window.scrollTo(0, 0);
+  }
+}
+
+const button = (label, action, secondary = false) =>
+  `<button type="button" class="button${secondary ? ' secondary' : ''}" data-action="${action}">${label}</button>`;
+const roundKey = (subject, index) => `${subject}-${index}`;
+const completeCount = subject => subjects[subject].rounds.filter((_, index) => record[roundKey(subject, index)]?.completed).length;
+let active = null;
+
+function home(focus = true) {
+  active = null;
+  const total = completeCount('maths') + completeCount('english');
+  put(`<section aria-labelledby="home-heading">
+    <h2 id="home-heading" tabindex="-1" data-focus>Choose your training</h2>
+    <p class="intro">Play at your own pace. You can stop between questions and come back later.</p>
+    <div class="grid">${Object.entries(subjects).map(([id, subject]) => `
+      <article class="card subject ${id}">
+        <span class="tag">${subject.time}</span>
+        <h3>${subject.title}</h3>
+        <p>${subject.subtitle}</p>
+        <p>${completeCount(id)} of ${subject.rounds.length} complete</p>
+        ${button('Choose ' + subject.title, id)}
+      </article>`).join('')}</div>
+  </section>
+  <section class="scoreboard" aria-labelledby="score-heading">
+    <p class="kicker">Scoreboard</p><h2 id="score-heading">${total === 9 ? 'Full-time champion!' : 'Your progress'}</h2>
+    <p id="total-label">${total} of 9 rounds complete</p>
+    <meter min="0" max="9" value="${total}" aria-labelledby="total-label"></meter>
+    ${total || Object.keys(record).length ? `<div class="actions controls">${button('Clear progress', 'reset', true)}</div>` : ''}
+  </section>`, true, focus);
+}
+
+function menu(subject) {
+  active = null;
+  const {title, rounds, time} = subjects[subject];
+  put(`<div class="toolbar">${button('← Training ground', 'home', true)}</div>
+    <p class="kicker">${time}</p>
+    <h2 tabindex="-1" data-focus>${title} training</h2>
+    <p class="intro">${subject === 'maths' ? 'Start with the warm-up in each round. Draw groups for a word problem and explain how you found the answer.' : 'Take time to read, retell and look back for clues.'}</p>
+    <ul class="rounds">${rounds.map((round, index) => {
+      const saved = record[roundKey(subject, index)];
+      const label = saved?.run ? 'Continue' : saved?.completed ? 'Replay' : 'Start';
+      const result = saved?.completed ? ` · Best first try ${saved.best}/${subject === 'maths' ? 10 : 6}` : '';
+      return `<li class="card round"><div><h3>${round.title}</h3><p>${round.skill}${result}</p></div>
+        <button class="button" type="button" data-action="round-${subject}-${index}" aria-label="${label} ${round.title}">${label}</button></li>`;
+    }).join('')}</ul>`);
+}
+
+function start(subject, index) {
+  const key = roundKey(subject, index);
+  const entry = record[key] ||= {completed:false, best:0};
+  entry.run ||= {questions:subject === 'maths' ? makeMath(index) : makeEnglish(index), cursor:0, first:0, incorrect:[], hinted:false, done:false};
+  active = {subject, index, entry};
+  save();
+  showQuestion(subject === 'english');
+}
+
+function showQuestion(focusPassage = false) {
+  const {subject, index, entry:{run}} = active;
+  const reading = subject === 'english';
+  const round = subjects[subject].rounds[index];
+  const q = run.questions[run.cursor];
+  put(`<div class="toolbar">${button('← ' + subjects[subject].title + ' rounds', subject, true)}</div>
+    <h2>${round.title}</h2>
+    <div class="drill${reading ? ' reading' : ''}">
+    ${reading ? `<article class="panel story" aria-labelledby="read-title">
+      <h3 id="read-title" tabindex="-1"${focusPassage ? ' data-focus' : ''}>Read the passage</h3>
+      ${round.text.map(p => `<p>${p}</p>`).join('')}
+      <p class="task"><strong>Before you answer</strong><br>${round.task}</p>
+    </article>` : ''}
+    <section class="panel" aria-labelledby="question">
+    <p class="kicker" id="position">Question ${run.cursor + 1} of ${run.questions.length} · ${q.skill}</p>
+    <progress value="${run.cursor + Number(run.done)}" max="${run.questions.length}" aria-label="Questions solved"></progress>
+    ${reading ? `<div class="actions controls">${button('Read passage', 'passage', true)}</div>` : `<details class="warmup controls"><summary>Warm-up example</summary><p>${round.warm}</p></details>`}
+    <h3 class="question" id="question" tabindex="-1"${focusPassage ? '' : ' data-focus'} aria-describedby="position">${q.prompt}</h3>
+    ${q.options ? `<div class="answers">${q.options.map((option, i) =>
+      `<button class="choice" type="button" data-choice="${i}">${option}</button>`).join('')}</div>` :
+      `<form class="number" id="answer-form" novalidate><label for="answer">Your answer</label><div class="actions">
+        <input id="answer" aria-describedby="question" inputmode="numeric" pattern="[0-9]*" autocomplete="off">
+        <button class="button" type="submit">Check answer</button></div></form>`}
+    <div id="feedback" class="feedback" role="status"></div>
+    <div id="hint" class="hint" role="status"></div>
+    <div class="actions controls">${button('Show hint', 'hint', true)}
+      <button type="button" class="button" data-action="next" id="next" hidden>${run.cursor + 1 === run.questions.length ? 'See results' : 'Next question'} →</button>
+    </div></section></div>`);
+  if (run.hinted) document.querySelector('#hint').textContent = q.hint;
+  if (run.incorrect.length && !run.done) showFeedback('wrong', 'Try again. ' + q.hint);
+  if (run.done) solved();
+  updateChoices(q, run);
+}
+
+function updateChoices(q, run) {
+  main.querySelectorAll('[data-choice]').forEach(choice => {
+    const option = q.options[Number(choice.dataset.choice)];
+    if (run.done && option === q.answer) choice.dataset.state = 'right';
+    else if (run.incorrect.includes(option)) choice.dataset.state = 'wrong';
+    choice.disabled = run.done;
+    if (choice.dataset.state === 'wrong') choice.setAttribute('aria-label', option + ', tried and incorrect');
+    if (choice.dataset.state === 'right') choice.setAttribute('aria-label', option + ', correct');
+  });
+}
+
+function showFeedback(tone, message) {
+  const feedback = document.querySelector('#feedback');
+  // Keep the live region mounted so assistive technology can announce updates.
+  feedback.dataset.tone = tone;
+  feedback.textContent = message;
+}
+
+function solved() {
+  const {run} = active.entry;
+  const q = run.questions[run.cursor];
+  showFeedback('right', `Correct! ${q.why}`);
+  const input = document.querySelector('#answer');
+  if (input) {
+    input.value = q.answer;
+    input.readOnly = true;
+    document.querySelector('#answer-form button').disabled = true;
+  }
+  main.querySelector('[data-action="hint"]').hidden = true;
+  main.querySelector('progress').value = run.cursor + 1;
+  document.querySelector('#next').hidden = false;
+}
+
+function mark(answer) {
+  const {run} = active.entry;
+  if (run.done) return;
+  const q = run.questions[run.cursor];
+  if (answer === q.answer) {
+    if (!run.incorrect.length && !run.hinted) run.first++;
+    run.done = true;
+    solved();
+    document.querySelector('#next').focus();
+  } else {
+    if (!run.incorrect.includes(answer)) run.incorrect.push(answer);
+    showFeedback('wrong', 'Try again. ' + q.hint);
+    const input = document.querySelector('#answer');
+    if (input) {
+      input.focus();
+      input.select();
+    }
+  }
+  updateChoices(q, run);
+  save();
+}
+
+function next() {
+  const {subject, index, entry} = active;
+  const {run} = entry;
+  if (!run.done) return;
+  if (run.cursor + 1 < run.questions.length) {
+    run.cursor++;
+    run.done = false;
+    run.incorrect = [];
+    run.hinted = false;
+    save();
+    showQuestion();
+    return;
+  }
+  const total = run.questions.length;
+  const first = run.first;
+  entry.completed = true;
+  entry.best = Math.max(entry.best, first);
+  delete entry.run;
+  save();
+  active = null;
+  put(`<div class="toolbar">${button('← ' + subjects[subject].title + ' rounds', subject, true)}</div>
+    <section class="panel"><p class="kicker">${subjects[subject].rounds[index].title}</p>
+      <h2 tabindex="-1" data-focus>Round complete!</h2>
+      <p>You solved all ${total} questions. You got <strong>${first} out of ${total}</strong> on your first try without a hint.</p>
+      <p>${first === total ? 'See if you can do it again.' : 'Looking back and trying again helped you finish the round.'}</p>
+      <div class="actions">${index + 1 < subjects[subject].rounds.length
+        ? button('Next round →', `round-${subject}-${index + 1}`) : button('Training ground', 'home')}
+        ${button('Replay round', `round-${subject}-${index}`, true)}</div>
+    </section>`);
+}
+
+main.addEventListener('click', event => {
+  const target = event.target.closest('button');
+  if (!target) return;
+  const action = target.dataset.action;
+  if (target.dataset.choice !== undefined) {
+    const {run} = active.entry;
+    mark(run.questions[run.cursor].options[Number(target.dataset.choice)]);
+  } else if (action === 'home') home();
+  else if (Object.hasOwn(subjects, action)) menu(action);
+  else if (action?.startsWith('round-')) {
+    const [, subject, index] = action.split('-');
+    start(subject, Number(index));
+  } else if (action === 'hint') {
+    const {run} = active.entry;
+    run.hinted = true;
+    document.querySelector('#hint').textContent = run.questions[run.cursor].hint;
+    save();
+  } else if (action === 'passage') {
+    const title = document.querySelector('#read-title');
+    title.focus();
+  } else if (action === 'next') next();
+  else if (action === 'reset') {
+    dialog.returnValue = '';
+    dialog.showModal();
+  }
+});
+main.addEventListener('submit', event => {
+  if (event.target.id !== 'answer-form') return;
+  event.preventDefault();
+  const input = document.querySelector('#answer');
+  const value = input.value.trim();
+  if (!/^\d+$/.test(value)) {
+    showFeedback('wrong', 'Enter a whole number to check your answer.');
+    input.focus();
+    return;
+  }
+  mark(Number(value));
+});
+dialog.addEventListener('close', () => {
+  if (dialog.returnValue === 'clear') {
+    record = {};
+    save();
+    home();
+  }
+});
+home(false);
+</script>
+</body>
+</html>
